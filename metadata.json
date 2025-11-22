@@ -1,0 +1,7 @@
+{
+  "name": "AgriManager Pro",
+  "description": "Comprehensive farm management system including registration, plantation tracking, soil testing, service schedules, inventory, sales, and ledger with role-based access control.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
