@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { api } from '../services/api';
+import { db } from '../services/db';
 import { Farmer } from '../types';
 import { Search } from 'lucide-react';
 
@@ -30,9 +30,14 @@ export const SearchSelectFarmer = ({ onSelect }: { onSelect: (f: Farmer) => void
   const handleSearch = async () => {
     if (!query) return;
     setSearching(true);
-    const res = await api.farmers.search(query);
-    setResults(res);
-    setSearching(false);
+    try {
+      const res = await db.findFarmer(query);
+      setResults(res);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setSearching(false);
+    }
   };
 
   return (
